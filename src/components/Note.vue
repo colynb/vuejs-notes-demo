@@ -1,5 +1,8 @@
 <template>
   <div class="note">
+    <a href="" class="note__delete">
+      <span class="note__delete-icon">&times;</span>      
+    </a>
     <div class="note__content">
       <a href="" class="note__title">One note Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse incidunt corrupti ea necessitatibus earum vitae vel deleniti at, quam aspernatur porro doloremque cum, quisquam ipsum culpa adipisci quibusdam. Iste, sapiente.</a>
       <p class="note__body">
@@ -23,6 +26,14 @@
     border-bottom: 1px solid #eee
     flex-direction: row
     max-width: 100%
+    opacity: .3
+    cursor: pointer
+
+    &:hover
+      opacity: 1
+
+      .note__delete
+        margin-left: 0
     
     &__content
       padding: 30px
@@ -49,5 +60,23 @@
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
+
+    &__delete
+      position: relative
+      margin-left: -45px
+      width: 50px
+      display: block
+      background-color: #cc4444
+      min-height: 100%
+      color: #fff
+      transition: margin-left 100ms ease-in-out
+
+    &__delete-icon
+      position: absolute
+      top: 50%
+      left: 50%
+      font-size: 1.5em
+      font-weight: 600
+      transform: translate(-50%, -50%)
 
 </style>
