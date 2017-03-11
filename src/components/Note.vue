@@ -1,9 +1,9 @@
 <template>
   <div class="note">
-    <a href="" class="note__delete">
+    <a href="" class="note__delete" v-on:click.prevent="deleteNote(note)">
       <span class="note__delete-icon">&times;</span>      
     </a>
-    <div class="note__content">
+    <div class="note__content" v-on:click.prevent="openNote(note)">
       <a href="" class="note__title">
         <span v-if="note.title">{{ note.title }}</span>
         <span v-else>Untitled note</span>
@@ -17,10 +17,14 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     props: [
       'note'
-    ]
+    ],
+    methods: {
+      ...mapActions(['openNote', 'deleteNote'])
+    }
   }
 </script>
 

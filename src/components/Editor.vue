@@ -17,11 +17,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import debounce from 'debounce'
   export default {
-    created () {
-      this.save = debounce(this.saveNote, 500)
-    },
     computed: {
       ...mapGetters([
         'note',
@@ -31,7 +27,18 @@
       ])
     },
     methods: {
-      ...mapActions(['saveNote'])
+      ...mapActions([
+        'saveNote',
+        'startSaveTimeout'
+      ]),
+      save () {
+        if (!this.note.id) {
+          this.saveNote()
+          return
+        }
+
+        this.startSaveTimeout()
+      }
     }
   }
 </script>
@@ -46,7 +53,7 @@
     flex-direction: column
 
     &__title
-      width: 100%
+      max-width: 100%
       border: 0
       font: inherit
       font-size: 1.6em
@@ -55,7 +62,7 @@
 
     &__text
       flex: 1
-      width: 100%
+      max-width: 100%
       margin: 0
       padding: 20px 30px
       font: inherit

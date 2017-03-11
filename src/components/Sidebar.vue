@@ -2,22 +2,29 @@
   <div class="sidebar">
     <div v-if="notes.length">
       <note v-for="note in notes" :key="note.id" :note="note"></note>
+      <div class="sidebar__content">
+        <a href="#" v-on:click.prevent="clearCurrentNote">create one</a>
+      </div>
     </div>
     <div class="sidebar__content" v-else>
-      No notes, <a href="#">create one</a>
+      No notes
     </div>
+    
   </div>
 </template>
 
 <script>
   import Note from './Note'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     computed: {
       ...mapGetters([
         'notes'
       ])
+    },
+    methods: {
+      ...mapActions(['clearCurrentNote'])
     },
     components: {
       Note
