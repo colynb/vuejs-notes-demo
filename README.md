@@ -1,6 +1,7 @@
 # vue-notes
 
-> A Vue.js project
+> Demo notes app using Vuejs + Vuex
+
 
 ## Build Setup
 
