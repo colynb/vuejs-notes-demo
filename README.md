@@ -2,6 +2,8 @@
 
 > Demo notes app using Vuejs + Vuex
 
+Running demo at http://colynb.com/vuejs-notes-demo-app/
+
 <img width="1139" alt="screen shot 2017-03-11 at 9 41 56 am" src="https://cloud.githubusercontent.com/assets/1049124/23825026/85f9318a-063f-11e7-99e6-4b35c0390caf.png">
 
 ## Build Setup
