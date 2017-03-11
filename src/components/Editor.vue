@@ -1,23 +1,36 @@
 <template>
   <div class="editor">
-    <input type="text" class="editor__title" placeholder="Untitled Note">
-    <textarea class="editor__text" placeholder="Start writing">
-      
-
-    </textarea>
+    <input type="text" class="editor__title" placeholder="Untitled Note" v-model="note.title" v-on:keydown="save">
+    <textarea class="editor__text" placeholder="Start writing" v-model="note.body" v-on:keydown="save"></textarea>
 
     <footer class="editor__footer">
       <ul class="editor__footer-items">
         <li class="editor__footer-item">Words: x</li>
-        <li class="editor__footer-item editor__footer-item--right">Last saved: xx/xx/xxx</li>
+        <li class="editor__footer-item editor__footer-item--right">
+          <span v-if="saving"><em>Saving...</em></span>
+          Last saved: xx/xx/xxx
+        </li>
       </ul>
     </footer>
   </div>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+  import debounce from 'debounce'
   export default {
-
+    created () {
+      this.save = debounce(this.saveNote, 500)
+    },
+    computed: {
+      ...mapGetters([
+        'note',
+        'saving'
+      ])
+    },
+    methods: {
+      ...mapActions(['saveNote'])
+    }
   }
 </script>
 
