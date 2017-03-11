@@ -6,5 +6,6 @@ export default {
     body: null,
     lastSaved: null
   },
-  notes: []
+  /* eslint-disable no-undef */
+  notes: JSON.parse(localStorage.getItem('notes')) || []
 }

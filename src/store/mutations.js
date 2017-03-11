@@ -12,5 +12,8 @@ export default {
     setTimeout(function () {
       state.saving = false
     }, 500)
+  },
+  touchLastSaved (state) {
+    state.note.lastSaved = Date.now()
   }
 }

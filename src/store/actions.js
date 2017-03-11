@@ -1,4 +1,5 @@
 export const saveNote = ({commit, dispatch, state}) => {
+  commit('touchLastSaved')
   if (state.note.id === null) {
     commit('setCurrentNoteId', Date.now())
     commit('addToNotes', state.note)
@@ -7,6 +8,6 @@ export const saveNote = ({commit, dispatch, state}) => {
 }
 
 export const storeNotes = ({commit, dispatch, state}) => {
-  console.log('storing...')
-  commit('storeNotes', state.note)
+  /* eslint-disable no-undef */
+  localStorage.setItem('notes', JSON.stringify(state.notes))
 }

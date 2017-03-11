@@ -5,10 +5,10 @@
 
     <footer class="editor__footer">
       <ul class="editor__footer-items">
-        <li class="editor__footer-item">Words: x</li>
+        <li class="editor__footer-item">Words: {{ wordCount }}</li>
         <li class="editor__footer-item editor__footer-item--right">
           <span v-if="saving"><em>Saving...</em></span>
-          Last saved: xx/xx/xxx
+          Last saved: {{ lastSaved }}
         </li>
       </ul>
     </footer>
@@ -25,7 +25,9 @@
     computed: {
       ...mapGetters([
         'note',
-        'saving'
+        'saving',
+        'lastSaved',
+        'wordCount'
       ])
     },
     methods: {
